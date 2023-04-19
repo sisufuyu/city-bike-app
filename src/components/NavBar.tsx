@@ -16,7 +16,7 @@ const NavBar = () => {
   }
 
   return (
-    <AppBar>
+    <AppBar position="fixed" sx={{ opacity: 0.9 }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -26,12 +26,12 @@ const NavBar = () => {
             href="/"
             sx={{
               mr: 2,
-            //   display: { xs: 'none', md: 'flex' },
               fontFamily: 'Futura PT DemiBold',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.2rem',
               color: 'inherit',
               textDecoration: 'none',
+              fontSize: "1rem",
             }}
           >
             Helsinki City Bike

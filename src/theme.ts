@@ -1,4 +1,5 @@
 import { ThemeOptions } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -30,3 +31,13 @@ export const themeOptions: ThemeOptions = {
     }
   }
 }
+
+const theme = createTheme(themeOptions)
+theme.typography.h2 = {
+  fontSize: '3.75rem',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '2.4rem',
+  },
+}
+
+export default theme
