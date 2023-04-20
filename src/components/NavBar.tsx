@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
+import { useNavigate } from 'react-router-dom'
 
 const pages = ['Journeys', 'Stations'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
+  const navigate = useNavigate()
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget)
@@ -13,6 +15,11 @@ const NavBar = () => {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null)
+  }
+
+  const handleClick = (page: string) => {
+    handleCloseNavMenu()
+    navigate(`/${page.toLowerCase()}`)
   }
 
   return (
@@ -66,7 +73,7 @@ const NavBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleClick(page)}>
                   <Typography textAlign="center" variant="h6">{page}</Typography>
                 </MenuItem>
               ))}
@@ -76,13 +83,14 @@ const NavBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handleClick(page)}
                 sx={{ 
                   my: 2, 
                   color: 'white', 
                   display: 'block',
                   fontFamily: 'Futura PT DemiBold',
                   fontSize: '1rem',
+                  '&:hover': {color: "secondary.main"}
                 }}
               >
                 {page}

@@ -1,13 +1,34 @@
-import { Box, Container, Button, Typography } from "@mui/material"
-import QuiltedImageList from "./QuiltedImageList"
+import { Box, Container, Button, Typography } from '@mui/material'
+import QuiltedImageList from './QuiltedImageList'
+import { useNavigate  } from 'react-router-dom'
 
 const Main = () => {
+  const navigate = useNavigate()
+
+  const navigateToJourneys = () => {
+    navigate('/journeys')
+  }
+
   return (
     <Box>
+      <Container
+        maxWidth={false}
+        sx={{ 
+          position: "fixed", 
+          left: 0, 
+          right: 0, 
+          top: 0, 
+          bottom: 0, 
+          zIndex: "speedDial",
+          bgcolor: 'primary.main',
+          opacity: 0.5,
+        }}
+      >
+      </Container>
       <Box
         sx={{
           position: "fixed",  
-          zIndex: "modal",
+          zIndex: "speedDial",
           width: 1, 
           height: 1,
         }}
@@ -32,25 +53,12 @@ const Main = () => {
             fontFamily: "Futura PT DemiBold",
             mt: 1,
           }}
+          onClick={navigateToJourneys}
         >
           VIEW THE JOURNEYS
         </Button>
         </Box>
       </Box>
-      <Container
-        maxWidth={false}
-        sx={{ 
-          position: "fixed", 
-          left: 0, 
-          right: 0, 
-          top: 0, 
-          bottom: 0, 
-          zIndex: "speedDial",
-          bgcolor: 'primary.main',
-          opacity: 0.5,
-        }}
-      >
-      </Container>
       <Box
         sx={{ 
           position: "fixed", 
@@ -58,7 +66,7 @@ const Main = () => {
           right: 0, 
           top: 0, 
           bottom: 0, 
-          zIndex: "mobile stepper" 
+          zIndex: "mobile stepper",
         }}
       >
         <QuiltedImageList />
