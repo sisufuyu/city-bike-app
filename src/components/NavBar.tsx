@@ -33,7 +33,6 @@ const NavBar = () => {
             href="/"
             sx={{
               mr: 2,
-              fontFamily: 'Futura PT DemiBold',
               fontWeight: 700,
               letterSpacing: '.2rem',
               color: 'inherit',
@@ -88,7 +87,6 @@ const NavBar = () => {
                   my: 2, 
                   color: 'white', 
                   display: 'block',
-                  fontFamily: 'Futura PT DemiBold',
                   fontSize: '1rem',
                   '&:hover': {color: "secondary.main"}
                 }}

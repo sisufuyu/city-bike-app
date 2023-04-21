@@ -5,6 +5,7 @@ import Root from './pages/Root'
 import Home from './pages/Home'
 import theme from './theme'
 import JourneyList from './components/JourneyList'
+import StationList from './components/StationList'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Root />}>
             <Route path="" element={<Home />} />
             <Route path="/journeys" element={<JourneyList />} />
+            <Route path="/stations" element={<StationList />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -8,61 +8,64 @@ import {
   TableHead, 
   TableRow, 
   TableBody,
+  Pagination,
+  Button 
 } from '@mui/material'
 
-import { Journey } from '../type'
-import { getJourneys } from '../services/journeyService'
-import { countDistance, countDuration } from '../utils/helper'
+import { getStations } from '../services/stationService'
+import { Station } from '../type'
 import StyledTableCell from './StyledTableCell'
 import StyledTableRow from './StyledTableRow' 
 import StyledPagination from './StyledPagination'
 
-const JourneyList = () => {
-  const [journeys, setJourneys] = useState<Journey[]>([])
+const StationList = () => {
+  const [stations, setStations] = useState<Station[]>([])
   const [pageCount, setpageCount] = useState<number>(0)
   const [page, setPage] = useState<number>(1)
 
-  const fetchJourneys = async (page: number) => {
+  const fetchStations = async (page: number) => {
     const offset = (page-1)*10
-    const response = await getJourneys({ offset, limit: 10 })
+    const response = await getStations({ offset, limit: 10 })
     console.log(response)
-    setJourneys(response.data.results)
+    setStations(response.data.results)
     setpageCount(Math.ceil(response.data.total/10))
   }
-
-  useEffect(() => {
-    fetchJourneys(page)
-  }, [page])
   
-  return (
+  useEffect(() => {
+    fetchStations(page)
+  }, [page])
+
+  return(
     <Container sx={{my: "4.5rem"}}>
       <Typography variant="h5" color="primary.main" sx={{ pt: "2rem", pb: "1rem" }}>
-        All Journeys
+        All Stations
       </Typography>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="journeys table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="left">From</StyledTableCell>
-              <StyledTableCell align="left">To</StyledTableCell>
-              <StyledTableCell align="left">Distance&nbsp;(km)</StyledTableCell>
-              <StyledTableCell align="left">Duration&nbsp;(min)</StyledTableCell>
+              <StyledTableCell>ID</StyledTableCell>
+              <StyledTableCell align="left">Name</StyledTableCell>
+              <StyledTableCell align="left">Address</StyledTableCell>
+              <StyledTableCell align="left">Capacity</StyledTableCell>
+              <StyledTableCell align="left" />
             </TableRow>
           </TableHead>
           <TableBody>
-          {journeys.map((journey) => (
-            <StyledTableRow key={journey._id}>
+          {stations.map((station) => (
+            <StyledTableRow key={station._id}>
               <StyledTableCell component="th" scope="row">
-                {journey.departureStationName}
+                {station.id}
               </StyledTableCell>
+              <StyledTableCell align="left">{station.name}</StyledTableCell>
               <StyledTableCell align="left">
-                {journey.returnStationName}
+                {station.city.trim() ? `${station.address}, ${station.city}` : `${station.address}, Helsinki`}
               </StyledTableCell>
+              <StyledTableCell align="left">{station.capacities}</StyledTableCell>
               <StyledTableCell align="left">
-                {countDistance(journey.coveredDistance)}
-              </StyledTableCell>
-              <StyledTableCell align="left">
-                {countDuration(journey.duration)}
+                <Button variant="contained">
+                  View Station
+                </Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
@@ -74,4 +77,4 @@ const JourneyList = () => {
   )
 }
 
-export default JourneyList
+export default StationList

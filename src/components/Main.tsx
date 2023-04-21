@@ -43,14 +43,13 @@ const Main = () => {
             height: 1,
           }}
         >
-        <Typography variant="h2" color="white" fontFamily="Futura PT DemiBold">
+        <Typography variant="h2" color="white">
           DISCOVER HELSINKI CITY LIFE
         </Typography>
         <Button 
           variant="contained" 
           color="secondary"
           sx={{
-            fontFamily: "Futura PT DemiBold",
             mt: 1,
           }}
           onClick={navigateToJourneys}
