@@ -19,7 +19,7 @@ import StyledPagination from './StyledPagination'
 
 const JourneyList = () => {
   const [journeys, setJourneys] = useState<Journey[]>([])
-  const [pageCount, setpageCount] = useState<number>(0)
+  const [pageCount, setpageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
 
   const fetchJourneys = async (page: number) => {
@@ -36,7 +36,12 @@ const JourneyList = () => {
   
   return (
     <Container sx={{my: "4.5rem"}}>
-      <Typography variant="h5" color="primary.main" sx={{ pt: "2rem", pb: "1rem" }}>
+      <Typography 
+        variant="h5" 
+        color="primary.main"
+        fontFamily="Konnect Bold"
+        sx={{ pt: "2rem", pb: "1rem" }}
+      >
         All Journeys
       </Typography>
       <TableContainer component={Paper}>

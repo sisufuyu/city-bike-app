@@ -20,7 +20,7 @@ import StyledPagination from './StyledPagination'
 
 const StationList = () => {
   const [stations, setStations] = useState<Station[]>([])
-  const [pageCount, setpageCount] = useState<number>(0)
+  const [pageCount, setpageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
 
   const fetchStations = async (page: number) => {
@@ -37,7 +37,12 @@ const StationList = () => {
 
   return(
     <Container sx={{my: "4.5rem"}}>
-      <Typography variant="h5" color="primary.main" sx={{ pt: "2rem", pb: "1rem" }}>
+      <Typography 
+        variant="h5" 
+        color="primary.main" 
+        fontFamily="Konnect Bold"
+        sx={{ pt: "2rem", pb: "1rem" }}
+      >
         All Stations
       </Typography>
       <TableContainer component={Paper}>
@@ -63,7 +68,7 @@ const StationList = () => {
               </StyledTableCell>
               <StyledTableCell align="left">{station.capacities}</StyledTableCell>
               <StyledTableCell align="left">
-                <Button variant="contained">
+                <Button variant="outlined">
                   View Station
                 </Button>
               </StyledTableCell>

@@ -23,7 +23,7 @@ const NavBar = () => {
   }
 
   return (
-    <AppBar position="fixed" sx={{ opacity: 0.9 }}>
+    <AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -31,13 +31,12 @@ const NavBar = () => {
             noWrap
             component="a"
             href="/"
+            fontFamily="Konnect Bold"
             sx={{
               mr: 2,
-              fontWeight: 700,
               letterSpacing: '.2rem',
               color: 'inherit',
               textDecoration: 'none',
-              fontSize: "1rem",
             }}
           >
             Helsinki City Bike
@@ -73,7 +72,11 @@ const NavBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleClick(page)}>
-                  <Typography textAlign="center" variant="h6">{page}</Typography>
+                  <Typography 
+                    textAlign="center" 
+                    variant="h6"             
+                    fontFamily="Konnect"
+                  >{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -88,6 +91,7 @@ const NavBar = () => {
                   color: 'white', 
                   display: 'block',
                   fontSize: '1rem',
+                  fontFamily: "Konnect",
                   '&:hover': {color: "secondary.main"}
                 }}
               >

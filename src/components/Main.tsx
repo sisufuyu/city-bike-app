@@ -20,7 +20,7 @@ const Main = () => {
           top: 0, 
           bottom: 0, 
           zIndex: "speedDial",
-          bgcolor: 'primary.main',
+          bgcolor: 'primary.dark',
           opacity: 0.5,
         }}
       >
@@ -43,7 +43,7 @@ const Main = () => {
             height: 1,
           }}
         >
-        <Typography variant="h2" color="white">
+        <Typography variant="h2" color="white" fontFamily="Train One">
           DISCOVER HELSINKI CITY LIFE
         </Typography>
         <Button 
@@ -51,6 +51,9 @@ const Main = () => {
           color="secondary"
           sx={{
             mt: 1,
+            fontFamily: "Konnect Bold",
+            px: "1.25rem",
+            py: 1
           }}
           onClick={navigateToJourneys}
         >

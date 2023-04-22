@@ -5,9 +5,10 @@ export const themeOptions: ThemeOptions = {
   palette: {
     mode: 'light',
     primary: {
-      main: '#354a47',
+      main: '#315545',
       contrastText: '#ffffff',
       light: '#e1e5dc',
+      dark: '#163832',
     },
     secondary: {
       main: '#ebc95b',
@@ -17,20 +18,12 @@ export const themeOptions: ThemeOptions = {
     },
   },
   typography: {
-    fontFamily: 'Futura PT DemiBold'
+    fontFamily: [
+      'Konnect',
+      'Konnect Bold',
+      'Train One',
+    ].join(',')
   },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: 'Futura PT DemiBold';
-          font-style: normal;
-          font-weight: normal;
-          src: local('Futura PT DemiBold'), url('futura-pt-demibold-589e43b852117.woff') format('woff');
-        }
-      `
-    }
-  }
 }
 
 const theme = createTheme(themeOptions)

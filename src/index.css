@@ -14,3 +14,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Konnect';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Konnect Regular'), url('./fonts/Konnect-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Konnect Bold';
+  font-style: normal;
+  font-weight: bold;
+  src: local('Konnect Bold'), url('./fonts/Konnect-Bold.woff') format('woff');
+}
