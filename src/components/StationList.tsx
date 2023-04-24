@@ -8,15 +8,16 @@ import {
   TableHead, 
   TableRow, 
   TableBody,
-  Pagination,
   Button 
 } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 import { getStations } from '../services/stationService'
 import { Station } from '../type'
 import StyledTableCell from './StyledTableCell'
 import StyledTableRow from './StyledTableRow' 
 import StyledPagination from './StyledPagination'
+import { formatAddress } from '../utils/helper'
 
 const StationList = () => {
   const [stations, setStations] = useState<Station[]>([])
@@ -27,13 +28,19 @@ const StationList = () => {
     const offset = (page-1)*10
     const response = await getStations({ offset, limit: 10 })
     console.log(response)
-    setStations(response.data.results)
+    setStations(response?.data?.results)
     setpageCount(Math.ceil(response.data.total/10))
   }
   
   useEffect(() => {
     fetchStations(page)
   }, [page])
+
+  const navigate = useNavigate()
+
+  const navigateToStation = (id: string) => {
+    navigate(`/stations/${id}`)
+  }
 
   return(
     <Container sx={{my: "4.5rem"}}>
@@ -64,11 +71,11 @@ const StationList = () => {
               </StyledTableCell>
               <StyledTableCell align="left">{station.name}</StyledTableCell>
               <StyledTableCell align="left">
-                {station.city.trim() ? `${station.address}, ${station.city}` : `${station.address}, Helsinki`}
+                {formatAddress(station)}
               </StyledTableCell>
               <StyledTableCell align="left">{station.capacities}</StyledTableCell>
               <StyledTableCell align="left">
-                <Button variant="outlined">
+                <Button variant="outlined" onClick={() => navigateToStation(station._id)}>
                   View Station
                 </Button>
               </StyledTableCell>

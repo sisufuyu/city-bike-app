@@ -25,3 +25,13 @@ export interface Station {
   x: number
   y: number
 }
+
+export interface StationCountAvg {
+  count: number
+  avgDistance: number
+}
+
+export type StationWithJourneyInfo = Station & {
+  departureFrom: StationCountAvg
+  returnTo: StationCountAvg
+}

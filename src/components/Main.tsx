@@ -1,6 +1,8 @@
-import { Box, Container, Button, Typography } from '@mui/material'
-import QuiltedImageList from './QuiltedImageList'
+import { Box, Button, Typography } from '@mui/material'
 import { useNavigate  } from 'react-router-dom'
+
+import Background from './Background'
+import QuiltedImageList from './QuiltedImageList'
 
 const Main = () => {
   const navigate = useNavigate()
@@ -11,20 +13,7 @@ const Main = () => {
 
   return (
     <Box>
-      <Container
-        maxWidth={false}
-        sx={{ 
-          position: "fixed", 
-          left: 0, 
-          right: 0, 
-          top: 0, 
-          bottom: 0, 
-          zIndex: "speedDial",
-          bgcolor: 'primary.dark',
-          opacity: 0.5,
-        }}
-      >
-      </Container>
+      <Background children={<QuiltedImageList />} />
       <Box
         sx={{
           position: "fixed",  
@@ -60,18 +49,6 @@ const Main = () => {
           VIEW THE JOURNEYS
         </Button>
         </Box>
-      </Box>
-      <Box
-        sx={{ 
-          position: "fixed", 
-          left: 0, 
-          right: 0, 
-          top: 0, 
-          bottom: 0, 
-          zIndex: "mobile stepper",
-        }}
-      >
-        <QuiltedImageList />
       </Box>
     </Box>
   )

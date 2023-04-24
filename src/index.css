@@ -28,3 +28,10 @@ code {
   font-weight: bold;
   src: local('Konnect Bold'), url('./fonts/Konnect-Bold.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'Konnect Thin Italic';
+  font-style: Italic;
+  font-weight: Thin;
+  src: local('Konnect Thin Italic'), url('./fonts/Konnect-ThinItalic.woff') format('woff');
+}

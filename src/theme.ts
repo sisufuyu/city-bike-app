@@ -21,6 +21,7 @@ export const themeOptions: ThemeOptions = {
     fontFamily: [
       'Konnect',
       'Konnect Bold',
+      'Konnect Thin Italic',
       'Train One',
     ].join(',')
   },
