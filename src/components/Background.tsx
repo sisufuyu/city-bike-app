@@ -15,13 +15,14 @@ const Background = ({ children }: { children: JSX.Element }) => {
           bgcolor: 'primary.dark',
           opacity: 0.5,
         }}
+        className="mask"
       />
       <Box
         sx={{ 
           position: "fixed", 
           left: 0, 
           right: 0, 
-          top: 0, 
+          top: {xs: 56, sm: 56, md: 72}, 
           bottom: 0, 
           zIndex: "mobile stepper",
         }}

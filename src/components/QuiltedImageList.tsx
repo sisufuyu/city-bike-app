@@ -15,11 +15,12 @@ const QuiltedImageList = () => {
     <ImageList
       variant="quilted"
       cols={window.innerWidth > 900 ? 7: 5}
+      sx={{m: 0}}
     >   
       {itemData.map((item) => (
         <ImageListItem key={item.img} cols={item.cols} rows={item.rows}>
           <img
-            {...srcset(item.img, 213, item.rows, item.cols)}
+            {...srcset(item.img, 300, item.rows, item.cols)}
             alt={item.title}
             loading="lazy"
           />

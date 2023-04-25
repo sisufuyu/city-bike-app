@@ -35,3 +35,8 @@ export type StationWithJourneyInfo = Station & {
   departureFrom: StationCountAvg
   returnTo: StationCountAvg
 }
+
+export interface Center {
+  lat: number
+  lng: number
+}

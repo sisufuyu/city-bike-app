@@ -6,7 +6,7 @@ const StandardImageList = () => {
   const height = window.innerWidth > 900 ? window.innerHeight : window.innerHeight/2
 
   return (
-    <ImageList cols={window.innerWidth > 900 ? 6: 3}>
+    <ImageList cols={window.innerWidth > 900 ? 6: 3} sx={{m: 0}}>
       {itemData.map((item) => (
         <ImageListItem key={item.img}>
           <img
