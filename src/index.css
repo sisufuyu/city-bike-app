@@ -15,6 +15,10 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+}
+
 @font-face {
   font-family: 'Konnect';
   font-style: normal;

@@ -14,17 +14,23 @@ const Station = () => {
   const { id } = useParams()
 
   const [station, setStation] = useState<StationWithJourneyInfo>()
+  const [error, setError] = useState<boolean>(false)
 
-  const fetchStation = async (id: string) => {
-    const response = await getOneStation(id)
-    console.log(response)
-    setStation(response?.data)
+  const fetchStation = async (id: string | undefined) => {
+    if (!id) return
+    try {
+      const response = await getOneStation(id)
+      console.log('fetch')
+      console.log(response?.data)
+      setStation(response?.data)
+    } catch(err) {
+      console.log(err)
+      setError(true)
+    }
   } 
 
   useEffect(() => {
-    if (id) {
-      fetchStation(id)
-    }
+    fetchStation(id)
   }, [id])
 
   return (
@@ -44,10 +50,10 @@ const Station = () => {
         {station &&
           <Container 
             sx={{
-              borderRadius: 2, 
-              borderWidth: 1, 
+              borderRadius: 2,
+              borderWidth: "3px", 
               borderStyle: "solid", 
-              borderColor: "primary.light",
+              borderColor: "primay.light", 
               display: "flex", 
               justifyContent: "flex-start", 
               alignItems: "start",
@@ -137,6 +143,25 @@ const Station = () => {
               </Box>
             </Box>
             <Map center={{lat: station.y, lng: station.x}} zoom={15} address={station.address} />
+          </Container>
+        }
+        {error &&
+          <Container 
+            sx={{
+              borderRadius: 2, 
+              borderWidth: "3px", 
+              borderStyle: "solid", 
+              borderColor: "white",
+              display: "flex", 
+              justifyContent: "center", 
+              alignItems: "center",
+              backgroundColor: "primary.light",
+              px: 2,
+              py: 2,
+              mx: {xs: "0.5rem", sm: "1rem", md:"2.125rem"},
+            }}
+          >
+            <Typography variant="h6">Oops, something went wrong. Please try again later!</Typography>
           </Container>
         }
       </Box>

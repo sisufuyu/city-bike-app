@@ -7,6 +7,7 @@ import theme from './theme'
 import JourneyList from './components/JourneyList'
 import StationList from './components/StationList'
 import Station from './components/Station'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/journeys" element={<JourneyList />} />
             <Route path="/stations" element={<StationList />} />
             <Route path="/stations/:id" element={<Station />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
