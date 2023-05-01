@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Container, Pagination } from '@mui/material'
 
 const StyledPagination = ({ setPage, pageCount }: { setPage: (page: number) => void, pageCount: number }) => {

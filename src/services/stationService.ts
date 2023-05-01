@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { PaginationParams, Station, StationWithJourneyInfo } from '../type'
+import { PaginationParams } from '../type'
 
 const baseUrl = 'http://localhost:4000/stations'
 

@@ -53,7 +53,7 @@ const Station = () => {
               borderRadius: 2,
               borderWidth: "3px", 
               borderStyle: "solid", 
-              borderColor: "primay.light", 
+              borderColor: "primary.light", 
               display: "flex", 
               justifyContent: "flex-start", 
               alignItems: "start",

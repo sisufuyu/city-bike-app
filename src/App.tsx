@@ -8,6 +8,7 @@ import JourneyList from './components/JourneyList'
 import StationList from './components/StationList'
 import Station from './components/Station'
 import NotFound from './pages/NotFound'
+import CreateJourney from './components/CreateJourney'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Root />}>
             <Route path="" element={<Home />} />
             <Route path="/journeys" element={<JourneyList />} />
+            <Route path="/journeys/new" element={<CreateJourney />} />
             <Route path="/stations" element={<StationList />} />
             <Route path="/stations/:id" element={<Station />} />
             <Route path="*" element={<NotFound />} />

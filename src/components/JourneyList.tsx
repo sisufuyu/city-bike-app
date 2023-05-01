@@ -8,7 +8,10 @@ import {
   TableHead, 
   TableRow, 
   TableBody,
+  Box,
+  Button
 } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import { Journey } from '../type'
 import { getJourneys } from '../services/journeyService'
@@ -19,7 +22,7 @@ import StyledPagination from './StyledPagination'
 
 const JourneyList = () => {
   const [journeys, setJourneys] = useState<Journey[]>([])
-  const [pageCount, setpageCount] = useState<number>(1)
+  const [pageCount, setPageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
 
   const fetchJourneys = async (page: number) => {
@@ -27,7 +30,7 @@ const JourneyList = () => {
     const response = await getJourneys({ offset, limit: 10 })
     console.log(response)
     setJourneys(response.data.results)
-    setpageCount(Math.ceil(response.data.total/10))
+    setPageCount(Math.ceil(response.data.total/10))
   }
 
   useEffect(() => {
@@ -36,14 +39,28 @@ const JourneyList = () => {
   
   return (
     <Container sx={{my: "4.5rem"}}>
+      <Box 
+        sx={{
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center", 
+          pt: "2rem", 
+          pb: "1rem"
+        }}
+      >
       <Typography 
         variant="h5" 
         color="primary.main"
         fontFamily="Konnect Bold"
-        sx={{ pt: "2rem", pb: "1rem" }}
       >
         All Journeys
       </Typography>
+      <Link to="/journeys/new">
+        <Button variant="contained" color="secondary">
+          Create new journey
+        </Button>
+      </Link>
+      </Box>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="journeys table">
           <TableHead>

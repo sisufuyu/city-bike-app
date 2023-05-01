@@ -10,6 +10,14 @@ export interface Journey {
   duration: number
 }
 
+export interface CreatJourneyDTO {
+  departure: Date
+  return: Date
+  departureStationId: number
+  returnStationId: number
+  coveredDistance: number
+}
+
 export interface PaginationParams {
   offset: number
   limit: number
@@ -39,4 +47,13 @@ export type StationWithJourneyInfo = Station & {
 export interface Center {
   lat: number
   lng: number
+}
+
+export interface MessageProps {
+  open: boolean
+  setOpen: (open: boolean) => void
+  error: boolean
+  setError: (error: boolean) => void
+  message: string
+  setMessage: (message: string) => void
 }
