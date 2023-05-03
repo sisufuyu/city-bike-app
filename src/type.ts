@@ -1,3 +1,5 @@
+import { FormikProps } from 'formik/dist/types'
+
 export interface Journey {
   _id: string
   departure: Date
@@ -56,4 +58,22 @@ export interface MessageProps {
   setError: (error: boolean) => void
   message: string
   setMessage: (message: string) => void
+}
+
+export interface CreateStationDTO {
+  id: number
+  name: string
+  address: string
+  city?: string
+  capacities: number
+  x: number
+  y: number
+}
+
+export interface FieldProps {
+  id: string
+  name: string
+  label: string
+  required: boolean
+  formik: FormikProps<any>
 }

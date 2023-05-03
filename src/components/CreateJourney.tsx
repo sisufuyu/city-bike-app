@@ -12,6 +12,7 @@ import Background from './Background'
 import StandardImageList from './StandardImageList'
 import { createJourney } from '../services/journeyService'
 import { ErrorMsgContext } from '../pages/Root'
+import NumberField from './NumberField'
 
 interface CreateJourneyProps {
   departureStationId: string
@@ -119,17 +120,16 @@ const CreateJourney = () => {
   }
 
   return(
-    <Box>
+    <Box sx={{width: 1, height: 1}}>
       <Background children={<StandardImageList />} />
       <Box
         sx={{
-          position: "fixed",  
+          position: "absolute",  
           zIndex: "speedDial",
-          minWidth: 1, 
+          top: "6rem",
+          bottom: "6rem",
+          width: 1, 
           height: 1,
-          display: "flex", 
-          justifyContent: "center", 
-          alignItems: "center",
         }}
       >
         <Container
@@ -143,10 +143,12 @@ const CreateJourney = () => {
             justifyContent: "flex-start", 
             alignItems: "center",
             flexDirection: "column",
-            px: {sx:1, sm: "2rem"},
+            px: {xs:1, sm: "2rem"},
             py: "1rem",
-            width: {sx: 300, sm: 500},
-            mx: {xs: "0.5rem", sm: "1rem", md:"2.125rem"},
+            width: {xs: 300, sm: 500},
+            height: "fit-content",
+            ml: "50%",
+            transform: "translateX(-50%)",
           }}
         >
           <Typography sx={{width: "auto", my: 1, fontSize: "1.5rem"}}>
@@ -197,45 +199,26 @@ const CreateJourney = () => {
                 />
               </DemoContainer>
             </LocalizationProvider>
-            <TextField
+            <NumberField
               id="departureStationId"
               name="departureStationId"
               label="Departure Station ID"
-              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-              fullWidth 
-              required
-              value={formik.values.departureStationId}
-              onChange={formik.handleChange}
-              error={formik.touched.departureStationId && Boolean(formik.errors.departureStationId)}
-              helperText={formik.errors.departureStationId}
-              onBlur={formik.handleBlur}
+              required={true}
+              formik={formik}
             />
-            <TextField
+            <NumberField
               id="returnStationId"
               name="returnStationId"
               label="Target Station ID"
-              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
-              fullWidth 
-              required
-              value={formik.values.returnStationId}
-              onChange={formik.handleChange}
-              error={formik.touched.returnStationId && Boolean(formik.errors.returnStationId)}
-              helperText={formik.errors.returnStationId}
-              onBlur={formik.handleBlur}
+              required={true}
+              formik={formik}
             />
-            <TextField 
+            <NumberField 
               id="coveredDistance" 
               name="coveredDistance"
               label="Covered Distance"
-              inputProps={{inputMode: 'numeric', pattern: '[0-9]*'}}
-              InputProps={{endAdornment: <InputAdornment position="end">m</InputAdornment>}}
-              fullWidth 
-              required
-              value={formik.values.coveredDistance}
-              onChange={formik.handleChange}
-              error={formik.touched.coveredDistance && Boolean(formik.errors.coveredDistance)}
-              helperText={formik.errors.coveredDistance}
-              onBlur={formik.handleBlur}
+              required={true}
+              formik={formik}
             />
             <Button variant="contained" sx={{color: "secondary.main"}} type="submit">Create</Button>
           </Stack>

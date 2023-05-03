@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { 
+  Box,
   Container, 
   Typography, 
   Table, 
@@ -10,7 +11,7 @@ import {
   TableBody,
   Button 
 } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { getStations } from '../services/stationService'
 import { Station } from '../type'
@@ -44,14 +45,29 @@ const StationList = () => {
 
   return(
     <Container sx={{my: "4.5rem"}}>
-      <Typography 
-        variant="h5" 
-        color="primary.main" 
-        fontFamily="Konnect Bold"
-        sx={{ pt: "2rem", pb: "1rem" }}
+      <Box 
+        sx={{
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center", 
+          pt: "2rem", 
+          pb: "1rem"
+        }}
       >
-        All Stations
-      </Typography>
+        <Typography 
+          variant="h5" 
+          color="primary.main" 
+          fontFamily="Konnect Bold"
+          sx={{ pt: "2rem", pb: "1rem" }}
+        >
+          All Stations
+        </Typography>
+        <Link to="/stations/new">
+          <Button variant="contained" color="secondary">
+            Create new station
+          </Button>
+        </Link>
+      </Box>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="journeys table">
           <TableHead>

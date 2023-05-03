@@ -20,7 +20,7 @@ const Station = () => {
     if (!id) return
     try {
       const response = await getOneStation(id)
-      console.log('fetch')
+
       console.log(response?.data)
       setStation(response?.data)
     } catch(err) {

@@ -2,7 +2,7 @@ import GoogleMapReact from 'google-map-react'
 import { Container } from '@mui/material'
 
 import LocationPin from './LocationPin'
-import { Center } from '../type'
+import { Center } from '../../type'
 
 interface MapProps {
   center: Center

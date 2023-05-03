@@ -22,7 +22,7 @@ const Root = () => {
 
   return (
     <ErrorMsgContext.Provider value={{open, setOpen, message, setMessage, error, setError}}>
-      <Box>
+      <Box sx={{width: 1, height: 1}}>
         <NavBar />
           <Message open={open} setOpen={setOpen} error={error} message={message} />
         <Outlet />

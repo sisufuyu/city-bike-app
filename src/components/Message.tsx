@@ -13,7 +13,7 @@ const Message = ({ open, setOpen, message, error }: Omit<MessageProps, 'setError
   }
 
   return (
-    <Snackbar open={open} onClose={handleClose} autoHideDuration={6000}
+    <Snackbar open={open} onClose={handleClose} autoHideDuration={5000}
       sx={{
         position: "fixed",  
         zIndex: "appBar",
