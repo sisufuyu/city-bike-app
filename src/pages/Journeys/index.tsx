@@ -13,15 +13,15 @@ import {
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import { Journey } from '../type'
-import { getJourneys } from '../services/journeyService'
-import { countDistance, countDuration } from '../utils/helper'
-import StyledTableCell from '../components/StyledTableCell'
-import StyledTableRow from '../components/StyledTableRow' 
-import StyledPagination from '../components/StyledPagination'
-import useErrorMsgContext from '../hooks/useErrorMsgContext'
+import { Journey } from 'type'
+import { getJourneys } from 'services/journeyService'
+import { countDistance, countDuration } from 'utils/helper'
+import StyledTableCell from 'components/StyledTableCell'
+import StyledTableRow from 'components/StyledTableRow' 
+import StyledPagination from 'components/StyledPagination'
+import useErrorMsgContext from 'hooks/useErrorMsgContext'
 
-const JourneyList = () => {
+const Journeys = () => {
   const [journeys, setJourneys] = useState<Journey[]>([])
   const [pageCount, setPageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
@@ -102,4 +102,4 @@ const JourneyList = () => {
   )
 }
 
-export default JourneyList
+export default Journeys

@@ -8,11 +8,11 @@ import { LocalizationProvider, DateTimeField } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
 import { DateTimeValidationError } from '@mui/x-date-pickers/models'
 
-import Background from '../components/Background'
-import StandardImageList from '../components/StandardImageList'
-import { createJourney } from '../services/journeyService'
-import NumberField from '../components/NumberField'
-import useErrorMsgContext from '../hooks/useErrorMsgContext'
+import Background from 'components/Background'
+import StandardImageList from 'components/StandardImageList'
+import { createJourney } from 'services/journeyService'
+import NumberField from 'components/NumberField'
+import useErrorMsgContext from 'hooks/useErrorMsgContext'
 
 interface CreateJourneyProps {
   departureStationId: string
@@ -78,7 +78,7 @@ const CreateJourney = () => {
 
   const handleSubmit = async (values: CreateJourneyProps) => {
     if(returnError || departureError) return
-    
+
     const journey = {
       departureStationId: parseInt(values.departureStationId),
       returnStationId: parseInt(values.returnStationId),

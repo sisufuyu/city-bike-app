@@ -1,9 +1,9 @@
 import { Typography, Box } from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 
-import { StationWithJourneyInfo } from '../../type'
-import { formatAddress, countDistance } from '../../utils/helper'
-import Map from '../../components/Map'
+import { StationWithJourneyInfo } from 'type'
+import { formatAddress, countDistance } from 'utils/helper'
+import Map from 'components/Map'
 
 const StationInfo = ({ station }: { station: StationWithJourneyInfo }) => {
   return (

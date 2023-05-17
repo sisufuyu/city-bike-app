@@ -13,13 +13,13 @@ import {
 } from '@mui/material'
 import { useNavigate, Link } from 'react-router-dom'
 
-import { getStations } from '../services/stationService'
-import { Station } from '../type'
-import StyledTableCell from '../components/StyledTableCell'
-import StyledTableRow from '../components/StyledTableRow' 
-import StyledPagination from '../components/StyledPagination'
-import { formatAddress } from '../utils/helper'
-import useErrorMsgContext from '../hooks/useErrorMsgContext'
+import { getStations } from 'services/stationService'
+import { Station } from 'type'
+import StyledTableCell from 'components/StyledTableCell'
+import StyledTableRow from 'components/StyledTableRow' 
+import StyledPagination from 'components/StyledPagination'
+import { formatAddress } from 'utils/helper'
+import useErrorMsgContext from 'hooks/useErrorMsgContext'
 
 const StationList = () => {
   const [stations, setStations] = useState<Station[]>([])

@@ -8,12 +8,12 @@ import {
 import { object, string, number } from 'yup'
 import { useFormik, FormikHelpers } from 'formik'
 
-import Background from '../components/Background'
-import StandardImageList from '../components/StandardImageList'
-import TextFieldWithError from '../components/TextFieldWithError'
-import NumberField from '../components/NumberField'
-import { createStation } from '../services/stationService'
-import useErrorMsgContext from '../hooks/useErrorMsgContext'
+import Background from 'components/Background'
+import StandardImageList from 'components/StandardImageList'
+import TextFieldWithError from 'components/TextFieldWithError'
+import NumberField from 'components/NumberField'
+import { createStation } from 'services/stationService'
+import useErrorMsgContext from 'hooks/useErrorMsgContext'
 
 interface createStationProps {
   id: string

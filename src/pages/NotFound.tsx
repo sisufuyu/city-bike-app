@@ -1,8 +1,8 @@
 import { Container, Typography, Box, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-import Background from '../components/Background'
-import StandardImageList from '../components/StandardImageList'
+import Background from 'components/Background'
+import StandardImageList from 'components/StandardImageList'
 
 const NotFound = () => {
   return (

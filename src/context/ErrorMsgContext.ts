@@ -1,6 +1,6 @@
 import { createContext } from 'react'
 
-import { MessageProps } from '../type'
+import { MessageProps } from 'type'
 
 const ErrorMsgContext = createContext<MessageProps>({ 
   open: false, 
