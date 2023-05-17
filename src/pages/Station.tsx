@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Container, Typography, Box } from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 
@@ -9,30 +9,28 @@ import Map from '../components/Map'
 import { StationWithJourneyInfo } from '../type'
 import { getOneStation } from '../services/stationService'
 import { formatAddress, countDistance } from '../utils/helper'
-import ErrorMsgContext from '../context/ErrorMsgContext'
+import useErrorMsgContext from '../hooks/useErrorMsgContext'
 
 const Station = () => {
   const { id } = useParams()
 
   const [station, setStation] = useState<StationWithJourneyInfo>()
-  const { error, setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const { setErr } = useErrorMsgContext()
 
-  const fetchStation = async (id: string | undefined) => {
+  const fetchStation = useCallback(async (id: string | undefined) => {
     if (!id) return
     try {
       const response = await getOneStation(id)
 
       setStation(response?.data)
     } catch(err) {
-      setOpen(true)
-      setError(true)
-      setMessage('Get station information failed, please try again later!')
+      setErr('Get station information failed, please try again later!')
     }
-  } 
+  }, [setErr])
 
   useEffect(() => {
     fetchStation(id)
-  }, [id])
+  }, [fetchStation, id])
 
   return (
     <Box>
@@ -51,7 +49,7 @@ const Station = () => {
         {station &&
           <Container 
             sx={{
-              borderRadius: 2,
+              borderRadius: "0.5rem",
               borderWidth: "3px", 
               borderStyle: "solid", 
               borderColor: "primary.light", 
@@ -63,6 +61,7 @@ const Station = () => {
               px: 2,
               py: {xs: "1rem", sm: "1.5rem", md: "2.125rem"},
               mx: {xs: "0.5rem", sm: "1rem", md:"2.125rem"},
+              minHeight: 373,
             }}
             className="station-card"
           >
@@ -145,26 +144,7 @@ const Station = () => {
             </Box>
             <Map center={{lat: station.y, lng: station.x}} zoom={15} address={station.address} />
           </Container>
-        }
-        {error &&
-          <Container 
-            sx={{
-              borderRadius: 2, 
-              borderWidth: "3px", 
-              borderStyle: "solid", 
-              borderColor: "white",
-              display: "flex", 
-              justifyContent: "center", 
-              alignItems: "center",
-              backgroundColor: "primary.light",
-              px: 2,
-              py: 2,
-              mx: {xs: "0.5rem", sm: "1rem", md:"2.125rem"},
-            }}
-          >
-            <Typography variant="h6">Oops, something went wrong. Please try again later!</Typography>
-          </Container>
-        }
+        } 
       </Box>
     </Box>
   )

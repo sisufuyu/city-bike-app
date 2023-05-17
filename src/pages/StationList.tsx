@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { 
   Box,
   Container, 
@@ -19,15 +19,15 @@ import StyledTableCell from '../components/StyledTableCell'
 import StyledTableRow from '../components/StyledTableRow' 
 import StyledPagination from '../components/StyledPagination'
 import { formatAddress } from '../utils/helper'
-import ErrorMsgContext from '../context/ErrorMsgContext'
+import useErrorMsgContext from '../hooks/useErrorMsgContext'
 
 const StationList = () => {
   const [stations, setStations] = useState<Station[]>([])
   const [pageCount, setpageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
-  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const { setErr } = useErrorMsgContext()
 
-  const fetchStations = async (page: number) => {
+  const fetchStations = useCallback(async (page: number) => {
     try {
     const offset = (page-1)*10
     const response = await getStations({ offset, limit: 10 })
@@ -35,15 +35,13 @@ const StationList = () => {
     setStations(response?.data?.results)
     setpageCount(Math.ceil(response.data.total/10))
     } catch(err) {
-      setOpen(true)
-      setError(true)
-      setMessage('Get stations list failed, please try again later!')
+      setErr('Get stations list failed, please try again later!')
     }
-  }
+  }, [setErr])
   
   useEffect(() => {
     fetchStations(page)
-  }, [page])
+  }, [fetchStations, page])
 
   const navigate = useNavigate()
 

@@ -1,4 +1,4 @@
-import { useState, useMemo, useContext } from 'react'
+import { useState, useMemo } from 'react'
 import { Box, Container, Typography, Stack, Button } from '@mui/material'
 import { useFormik } from 'formik'
 import { object, number, date } from 'yup'
@@ -12,7 +12,7 @@ import Background from '../components/Background'
 import StandardImageList from '../components/StandardImageList'
 import { createJourney } from '../services/journeyService'
 import NumberField from '../components/NumberField'
-import ErrorMsgContext from '../context/ErrorMsgContext'
+import useErrorMsgContext from '../hooks/useErrorMsgContext'
 
 interface CreateJourneyProps {
   departureStationId: string
@@ -44,6 +44,8 @@ const CreateJourney = () => {
   const [departureError, setDepartureError] = useState<DateTimeValidationError | null>(null)
   const [returnError, setReturnError] = useState<DateTimeValidationError | null>(null)
 
+  const { setErr, setMsg } = useErrorMsgContext()
+
   const departureErrMsg = useMemo(() => {
     switch (departureError) {
       case 'maxDate':
@@ -74,37 +76,34 @@ const CreateJourney = () => {
     }
   }, [returnError])
 
-  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const handleSubmit = async (values: CreateJourneyProps) => {
+    if(returnError || departureError) return
+    
+    const journey = {
+      departureStationId: parseInt(values.departureStationId),
+      returnStationId: parseInt(values.returnStationId),
+      departure: values.departure.toDate(),
+      return: values.return.toDate(),
+      coveredDistance: parseInt(values.coveredDistance),
+    } 
+
+    try {
+      await createJourney(journey)
+
+      setMsg('Create new journey successfully!')
+    } catch (err) {
+      setErr('Create new journey failed, please try again later!')
+    }
+  }
 
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values) => {
-      if(returnError || departureError) return
-      const journey = {
-        departureStationId: parseInt(values.departureStationId),
-        returnStationId: parseInt(values.returnStationId),
-        departure: values.departure.toDate(),
-        return: values.return.toDate(),
-        coveredDistance: parseInt(values.coveredDistance),
-      } 
-
-      try {
-        await createJourney(journey)
-
-        setOpen(true)
-        setError(false)
-        setMessage('Create new journey successfully!')
-      } catch (err) {
-        setOpen(true)
-        setError(true)
-        setMessage('Create new journey failed, please try again later!')
-      }
-    }
+    onSubmit: handleSubmit,
   })
 
   const changeDepartureValue = (value: Dayjs | null) => {
-    formik.setFieldValue('departure',value, true)
+    formik.setFieldValue('departure', value, true)
   }
 
   const changeReturnValue = (value: Dayjs | null) => {

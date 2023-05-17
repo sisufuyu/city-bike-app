@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { 
   Box, 
   Container, 
@@ -7,16 +6,26 @@ import {
   Button 
 } from '@mui/material'
 import { object, string, number } from 'yup'
-import { useFormik } from 'formik'
+import { useFormik, FormikHelpers } from 'formik'
 
 import Background from '../components/Background'
 import StandardImageList from '../components/StandardImageList'
 import TextFieldWithError from '../components/TextFieldWithError'
 import NumberField from '../components/NumberField'
 import { createStation } from '../services/stationService'
-import ErrorMsgContext from '../context/ErrorMsgContext'
+import useErrorMsgContext from '../hooks/useErrorMsgContext'
 
-const initialValues = {
+interface createStationProps {
+  id: string
+  name: string
+  address: string
+  city?: string
+  capacities: string
+  x: string
+  y: string
+}
+
+const initialValues: createStationProps = {
   id: '',
   name: '',
   address: '',
@@ -37,33 +46,34 @@ const validationSchema = object({
 })
 
 const CreateStation = () => {
-  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const { setErr, setMsg } = useErrorMsgContext()
+
+  const handleSubmit = async (
+    values: createStationProps, 
+    { resetForm }: FormikHelpers<createStationProps>
+  ) => {
+    const station = {
+      ...values,
+      id: parseInt(values.id),
+      capacities: parseInt(values.capacities),
+      x: parseFloat(values.x),
+      y: parseFloat(values.y),
+    }
+
+    try {
+      await createStation(station)
+
+      setMsg('Create new station successfully!')
+      resetForm()
+    } catch (err) {
+      setErr('Create new station failed, please try again later!')
+    }
+  }
 
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: async (values) => {
-      console.log(values)
-      const station = {
-        ...values,
-        id: parseInt(values.id),
-        capacities: parseInt(values.capacities),
-        x: parseFloat(values.x),
-        y: parseFloat(values.y),
-      }
-      try {
-        await createStation(station)
-
-        setOpen(true)
-        setError(false)
-        setMessage('Create new station successfully!')
-      } catch (err) {
-        
-        setOpen(true)
-        setError(true)
-        setMessage('Create new station failed, please try again later!')
-      }
-    }
+    onSubmit: handleSubmit,
   })
 
   return (

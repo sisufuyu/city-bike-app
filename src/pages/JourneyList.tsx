@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { 
   Container, 
   Typography, 
@@ -19,15 +19,15 @@ import { countDistance, countDuration } from '../utils/helper'
 import StyledTableCell from '../components/StyledTableCell'
 import StyledTableRow from '../components/StyledTableRow' 
 import StyledPagination from '../components/StyledPagination'
-import ErrorMsgContext from '../context/ErrorMsgContext'
+import useErrorMsgContext from '../hooks/useErrorMsgContext'
 
 const JourneyList = () => {
   const [journeys, setJourneys] = useState<Journey[]>([])
   const [pageCount, setPageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
-  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const { setErr } = useErrorMsgContext()
 
-  const fetchJourneys = async (page: number) => {
+  const fetchJourneys = useCallback(async (page: number) => {
     try {
       const offset = (page-1)*10
       const response = await getJourneys({ offset, limit: 10 })
@@ -35,15 +35,13 @@ const JourneyList = () => {
       setJourneys(response.data.results)
       setPageCount(Math.ceil(response.data.total/10))
     } catch(err) {
-      setOpen(true)
-      setError(true)
-      setMessage('Get journey list failed, please try again later!')
+      setErr('Get journey list failed, please try again later!')
     }
-  }
+  }, [setErr])
 
   useEffect(() => {
     fetchJourneys(page)
-  }, [page])
+  }, [fetchJourneys, page])
   
   return (
     <Container sx={{my: "4.5rem"}}>
