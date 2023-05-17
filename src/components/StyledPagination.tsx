@@ -7,7 +7,7 @@ const StyledPagination = ({ setPage, pageCount }: { setPage: (page: number) => v
   }
 
   return (
-    <Container sx={{ my: "1rem", display: "flex", justifyContent: "center" }}>
+    <Container sx={{ py: "1rem", display: "flex", justifyContent: "center" }}>
       <Pagination count={pageCount} color="secondary" variant="outlined" onChange={onPageChange}/>
     </Container>
   )

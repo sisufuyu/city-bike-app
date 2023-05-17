@@ -9,12 +9,12 @@ import {
 import { object, string, number } from 'yup'
 import { useFormik } from 'formik'
 
-import Background from './Background'
-import StandardImageList from './StandardImageList'
-import TextFieldWithError from './TextFieldWithError'
-import NumberField from './NumberField'
-import { ErrorMsgContext } from '../pages/Root'
+import Background from '../components/Background'
+import StandardImageList from '../components/StandardImageList'
+import TextFieldWithError from '../components/TextFieldWithError'
+import NumberField from '../components/NumberField'
 import { createStation } from '../services/stationService'
+import ErrorMsgContext from '../context/ErrorMsgContext'
 
 const initialValues = {
   id: '',
@@ -37,7 +37,7 @@ const validationSchema = object({
 })
 
 const CreateStation = () => {
-  const {setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
 
   const formik = useFormik({
     initialValues,
@@ -58,7 +58,7 @@ const CreateStation = () => {
         setError(false)
         setMessage('Create new station successfully!')
       } catch (err) {
-        console.log(err)
+        
         setOpen(true)
         setError(true)
         setMessage('Create new station failed, please try again later!')

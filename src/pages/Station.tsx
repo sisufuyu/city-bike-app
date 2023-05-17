@@ -1,31 +1,32 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Container, Typography, Box } from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 
-import Background from './Background'
-import StandardImageList from './StandardImageList'
-import Map from './Map'
+import Background from '../components/Background'
+import StandardImageList from '../components/StandardImageList'
+import Map from '../components/Map'
 import { StationWithJourneyInfo } from '../type'
 import { getOneStation } from '../services/stationService'
 import { formatAddress, countDistance } from '../utils/helper'
+import ErrorMsgContext from '../context/ErrorMsgContext'
 
 const Station = () => {
   const { id } = useParams()
 
   const [station, setStation] = useState<StationWithJourneyInfo>()
-  const [error, setError] = useState<boolean>(false)
+  const { error, setOpen, setError, setMessage } = useContext(ErrorMsgContext)
 
   const fetchStation = async (id: string | undefined) => {
     if (!id) return
     try {
       const response = await getOneStation(id)
 
-      console.log(response?.data)
       setStation(response?.data)
     } catch(err) {
-      console.log(err)
+      setOpen(true)
       setError(true)
+      setMessage('Get station information failed, please try again later!')
     }
   } 
 

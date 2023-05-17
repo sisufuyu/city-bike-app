@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { 
   Box,
   Container, 
@@ -15,22 +15,30 @@ import { useNavigate, Link } from 'react-router-dom'
 
 import { getStations } from '../services/stationService'
 import { Station } from '../type'
-import StyledTableCell from './StyledTableCell'
-import StyledTableRow from './StyledTableRow' 
-import StyledPagination from './StyledPagination'
+import StyledTableCell from '../components/StyledTableCell'
+import StyledTableRow from '../components/StyledTableRow' 
+import StyledPagination from '../components/StyledPagination'
 import { formatAddress } from '../utils/helper'
+import ErrorMsgContext from '../context/ErrorMsgContext'
 
 const StationList = () => {
   const [stations, setStations] = useState<Station[]>([])
   const [pageCount, setpageCount] = useState<number>(1)
   const [page, setPage] = useState<number>(1)
+  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
 
   const fetchStations = async (page: number) => {
+    try {
     const offset = (page-1)*10
     const response = await getStations({ offset, limit: 10 })
-    console.log(response)
+    
     setStations(response?.data?.results)
     setpageCount(Math.ceil(response.data.total/10))
+    } catch(err) {
+      setOpen(true)
+      setError(true)
+      setMessage('Get stations list failed, please try again later!')
+    }
   }
   
   useEffect(() => {

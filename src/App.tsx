@@ -3,13 +3,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Root from './pages/Root'
 import Home from './pages/Home'
-import theme from './theme'
-import JourneyList from './components/JourneyList'
-import StationList from './components/StationList'
-import Station from './components/Station'
+import JourneyList from './pages/JourneyList'
+import StationList from './pages/StationList'
+import Station from './pages/Station'
 import NotFound from './pages/NotFound'
-import CreateJourney from './components/CreateJourney'
-import CreateStation from './components/CreateStation'
+import CreateJourney from './pages/CreateJourney'
+import CreateStation from './pages/CreateStation'
+import theme from './theme'
 
 function App() {
   return (

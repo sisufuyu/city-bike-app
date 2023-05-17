@@ -1,5 +1,5 @@
 import { useState, useMemo, useContext } from 'react'
-import { Box, Container, Typography, TextField, InputAdornment, Stack, Button } from '@mui/material'
+import { Box, Container, Typography, Stack, Button } from '@mui/material'
 import { useFormik } from 'formik'
 import { object, number, date } from 'yup'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
@@ -8,11 +8,11 @@ import { LocalizationProvider, DateTimeField } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
 import { DateTimeValidationError } from '@mui/x-date-pickers/models'
 
-import Background from './Background'
-import StandardImageList from './StandardImageList'
+import Background from '../components/Background'
+import StandardImageList from '../components/StandardImageList'
 import { createJourney } from '../services/journeyService'
-import { ErrorMsgContext } from '../pages/Root'
-import NumberField from './NumberField'
+import NumberField from '../components/NumberField'
+import ErrorMsgContext from '../context/ErrorMsgContext'
 
 interface CreateJourneyProps {
   departureStationId: string
@@ -74,7 +74,7 @@ const CreateJourney = () => {
     }
   }, [returnError])
 
-  const {setOpen, setError, setMessage } = useContext(ErrorMsgContext)
+  const { setOpen, setError, setMessage } = useContext(ErrorMsgContext)
 
   const formik = useFormik({
     initialValues,
