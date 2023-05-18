@@ -3,7 +3,7 @@ import ErrorMsgContext from 'context/ErrorMsgContext'
 
 const useErrorMsgContext = () => {
   const { error, setOpen, setError, setMessage } = useContext(ErrorMsgContext)
-  
+
   const setErr = (msg: string) => {
     setOpen(true)
     setError(true)
@@ -17,7 +17,7 @@ const useErrorMsgContext = () => {
   }
 
   return {
-    error, 
+    error,
     setErr,
     setMsg
   }

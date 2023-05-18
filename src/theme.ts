@@ -1,5 +1,4 @@
-import { ThemeOptions } from '@mui/material/styles'
-import { createTheme } from '@mui/material/styles'
+import { ThemeOptions, createTheme } from '@mui/material/styles'
 
 export const themeOptions: ThemeOptions = {
   palette: {
@@ -8,31 +7,31 @@ export const themeOptions: ThemeOptions = {
       main: '#315545',
       contrastText: '#ffffff',
       light: '#e1e5dc',
-      dark: '#163832',
+      dark: '#163832'
     },
     secondary: {
-      main: '#ebc95b',
+      main: '#ebc95b'
     },
     info: {
-      main: '#91bdac',
-    },
+      main: '#91bdac'
+    }
   },
   typography: {
     fontFamily: [
       'Konnect',
       'Konnect Bold',
       'Konnect Thin Italic',
-      'Train One',
+      'Train One'
     ].join(',')
-  },
+  }
 }
 
 const theme = createTheme(themeOptions)
 theme.typography.h2 = {
   fontSize: '3.75rem',
   [theme.breakpoints.down('md')]: {
-    fontSize: '2.4rem',
-  },
+    fontSize: '2.4rem'
+  }
 }
 
 export default theme

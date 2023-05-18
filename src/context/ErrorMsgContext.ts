@@ -2,13 +2,13 @@ import { createContext } from 'react'
 
 import { MessageProps } from 'type'
 
-const ErrorMsgContext = createContext<MessageProps>({ 
-  open: false, 
+const ErrorMsgContext = createContext<MessageProps>({
+  open: false,
   setOpen: () => {},
-  error: false, 
+  error: false,
   setError: () => {},
   message: '',
-  setMessage: () => {},
+  setMessage: () => {}
 })
 
 export default ErrorMsgContext
