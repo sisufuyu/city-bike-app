@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "cypress/globals": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -17,15 +18,21 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "jest", 
+    "cypress"
   ],
   "rules": {
     "semi": ["error", "never", { "beforeStatementContinuationChars": "always"}],
     "keyword-spacing": ["error", { "before": true, "after": true }],
     "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
     "array-bracket-spacing": ["error", "never"],
-    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-uses-react": "off",
+    "no-trailing-spaces": "off",
+    "eol-last": "off",
+    "jsx-quotes": ["error", "prefer-double"]
   },
   "settings": {
     "react": {

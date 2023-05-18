@@ -5,7 +5,7 @@ const Background = ({ children }: { children: JSX.Element }) => {
     <Box>
       <Container
         maxWidth={false}
-        sx={{ 
+        sx={{
           position: "fixed", 
           left: 0, 
           right: 0, 
@@ -13,7 +13,7 @@ const Background = ({ children }: { children: JSX.Element }) => {
           bottom: 0, 
           zIndex: "fab",
           bgcolor: 'primary.dark',
-          opacity: 0.5,
+          opacity: 0.5
         }}
         className="mask"
       />

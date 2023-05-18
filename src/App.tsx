@@ -11,7 +11,7 @@ import CreateJourney from 'pages/CreateJourney'
 import CreateStation from 'pages/CreateStation'
 import theme from './theme'
 
-function App() {
+function App () {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
@@ -28,7 +28,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App

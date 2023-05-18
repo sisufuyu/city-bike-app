@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
-import { 
+import {
   Box,
-  Container, 
-  Typography, 
-  Button 
+  Container,
+  Typography,
+  Button
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -21,12 +21,12 @@ const Stations = () => {
 
   const fetchStations = useCallback(async (page: number) => {
     try {
-    const offset = (page-1)*10
-    const response = await getStations({ offset, limit: 10 })
+      const offset = (page - 1) * 10
+      const response = await getStations({ offset, limit: 10 })
     
-    setStations(response?.data?.results)
-    setpageCount(Math.ceil(response.data.total/10))
-    } catch(err) {
+      setStations(response?.data?.results)
+      setpageCount(Math.ceil(response.data.total / 10))
+    } catch (err) {
       setErr('Get stations list failed, please try again later!')
     }
   }, [setErr])
@@ -35,8 +35,8 @@ const Stations = () => {
     fetchStations(page)
   }, [fetchStations, page])
 
-  return(
-    <Container sx={{my: "4.5rem"}}>
+  return (
+    <Container sx={{ my: "4.5rem" }}>
       <Box 
         sx={{
           display: "flex", 
