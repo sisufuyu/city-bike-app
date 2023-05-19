@@ -12,17 +12,21 @@ interface MapProps {
 
 const Map = ({ center, zoom, address }: MapProps) => {
   return (
-    <Box sx={{width: {xs: 200, sm: 250, md: 300}, height: {xs: 200, sm: 250, md: 300}}}>
-      <GoogleMapReact 
-        bootstrapURLKeys={{ key: "AIzaSyAKC2ez_DPEQ0c6SEA0XEgUovbDbGBZV8A", language: "en" }}
+    <Box
+      sx={{
+        width: { xs: 200, sm: 250, md: 300 },
+        height: { xs: 200, sm: 250, md: 300 }
+      }}
+    >
+      <GoogleMapReact
+        bootstrapURLKeys={{
+          key: 'AIzaSyAKC2ez_DPEQ0c6SEA0XEgUovbDbGBZV8A',
+          language: 'en'
+        }}
         defaultCenter={center}
         defaultZoom={zoom}
       >
-        <LocationPin 
-          lat={center.lat}
-          lng={center.lng}
-          text={address}
-        />
+        <LocationPin lat={center.lat} lng={center.lng} text={address} />
       </GoogleMapReact>
     </Box>
   )

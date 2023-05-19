@@ -1,9 +1,19 @@
 import { useState } from 'react'
-import { AppBar, Container, Toolbar, Typography, Box, IconButton, Menu, MenuItem, Button } from '@mui/material'
+import {
+  AppBar,
+  Container,
+  Toolbar,
+  Typography,
+  Box,
+  IconButton,
+  Menu,
+  MenuItem,
+  Button
+} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import { useNavigate } from 'react-router-dom'
 
-const pages = ['Journeys', 'Stations'];
+const pages = ['Journeys', 'Stations']
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
@@ -36,12 +46,18 @@ const NavBar = () => {
               mr: 2,
               letterSpacing: '.2rem',
               color: 'inherit',
-              textDecoration: 'none',
+              textDecoration: 'none'
             }}
           >
             Helsinki City Bike
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
+              justifyContent: 'flex-end'
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -57,43 +73,52 @@ const NavBar = () => {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'right',
+                horizontal: 'right'
               }}
               keepMounted
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'right',
+                horizontal: 'right'
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={() => handleClick(page)}>
-                  <Typography 
-                    textAlign="center" 
-                    variant="h6"             
+                  <Typography
+                    textAlign="center"
+                    variant="h6"
                     fontFamily="Konnect"
-                  >{page}</Typography>
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end' }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'none', md: 'flex' },
+              justifyContent: 'flex-end'
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
                 onClick={() => handleClick(page)}
-                sx={{ 
-                  my: 2, 
-                  color: 'white', 
+                sx={{
+                  my: 2,
+                  color: 'white',
                   display: 'block',
                   fontSize: '1rem',
-                  fontFamily: "Konnect",
-                  '&:hover': {color: "secondary.main"}
+                  fontFamily: 'Konnect',
+                  '&:hover': { color: 'secondary.main' }
                 }}
+                role="navigation"
               >
                 {page}
               </Button>

@@ -1,16 +1,16 @@
 import {
-  Table, 
-  TableContainer, 
-  Paper, 
-  TableHead, 
-  TableRow, 
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
   TableBody,
-  Button 
+  Button
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
 import StyledTableCell from 'components/StyledTableCell'
-import StyledTableRow from 'components/StyledTableRow' 
+import StyledTableRow from 'components/StyledTableRow'
 import { Station } from 'type'
 import { formatAddress } from 'utils/helper'
 
@@ -42,9 +42,14 @@ const StationTable = ({ stations }: { stations: Station[] }) => {
               <StyledTableCell align="left">
                 {formatAddress(station)}
               </StyledTableCell>
-              <StyledTableCell align="left">{station.capacities}</StyledTableCell>
               <StyledTableCell align="left">
-                <Button variant="outlined" onClick={() => navigateToStation(station._id)}>
+                {station.capacities}
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                <Button
+                  variant="outlined"
+                  onClick={() => navigateToStation(station._id)}
+                >
                   View Station
                 </Button>
               </StyledTableCell>
@@ -52,7 +57,7 @@ const StationTable = ({ stations }: { stations: Station[] }) => {
           ))}
         </TableBody>
       </Table>
-    </TableContainer>    
+    </TableContainer>
   )
 }
 

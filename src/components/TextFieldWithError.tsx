@@ -2,13 +2,19 @@ import { TextField } from '@mui/material'
 
 import { FieldProps } from '../type'
 
-const TextFieldWithError = ({ id, name, label, required, formik }: FieldProps) => {
+const TextFieldWithError = ({
+  id,
+  name,
+  label,
+  required,
+  formik
+}: FieldProps) => {
   return (
-    <TextField 
+    <TextField
       id={id}
       name={name}
       label={label}
-      fullWidth 
+      fullWidth
       required={required}
       value={formik.values[name]}
       onChange={formik.handleChange}

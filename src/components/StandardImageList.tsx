@@ -2,11 +2,13 @@ import ImageList from '@mui/material/ImageList'
 import ImageListItem from '@mui/material/ImageListItem'
 
 const StandardImageList = () => {
-  const width = window.innerWidth > 900 ? window.innerWidth/6 : window.innerWidth/3
-  const height = window.innerWidth > 900 ? window.innerHeight : window.innerHeight/2
+  const width =
+    window.innerWidth > 900 ? window.innerWidth / 6 : window.innerWidth / 3
+  const height =
+    window.innerWidth > 900 ? window.innerHeight : window.innerHeight / 2
 
   return (
-    <ImageList cols={window.innerWidth > 900 ? 6: 3} sx={{m: 0}}>
+    <ImageList cols={window.innerWidth > 900 ? 6 : 3} sx={{ m: 0 }}>
       {itemData.map((item) => (
         <ImageListItem key={item.img}>
           <img
@@ -47,5 +49,5 @@ const itemData = [
   {
     img: 'https://images.unsplash.com/photo-1496104570434-e8719f0c1c02',
     title: 'red bike'
-  },
+  }
 ]

@@ -18,5 +18,7 @@ export const formatAddress = (station: Station | undefined) => {
   if (!station) {
     return ''
   }
-  return station?.city.trim() ? `${station?.address}, ${station?.city}` : `${station?.address}, Helsinki`
+  return station?.city.trim()
+    ? `${station?.address}, ${station?.city}`
+    : `${station?.address}, Helsinki`
 }

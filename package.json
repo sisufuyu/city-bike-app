@@ -20,7 +20,6 @@
     "dayjs": "^1.11.7",
     "formik": "^2.2.9",
     "google-map-react": "^2.2.0",
-    "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
@@ -35,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
-    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix"
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts,tsx}\" --quiet --fix"
   },
   "browserslist": {
     "production": [

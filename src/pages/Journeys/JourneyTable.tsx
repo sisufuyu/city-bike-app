@@ -1,15 +1,15 @@
-import { 
-  Table, 
-  TableContainer, 
-  Paper, 
-  TableHead, 
-  TableRow, 
-  TableBody,
+import {
+  Table,
+  TableContainer,
+  Paper,
+  TableHead,
+  TableRow,
+  TableBody
 } from '@mui/material'
 
 import { countDistance, countDuration } from 'utils/helper'
 import StyledTableCell from 'components/StyledTableCell'
-import StyledTableRow from 'components/StyledTableRow' 
+import StyledTableRow from 'components/StyledTableRow'
 import { Journey } from 'type'
 
 const JourneyTable = ({ journeys }: { journeys: Journey[] }) => {

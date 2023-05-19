@@ -12,10 +12,17 @@ const Root = () => {
   const [message, setMessage] = useState('')
 
   return (
-    <ErrorMsgContext.Provider value={{open, setOpen, message, setMessage, error, setError}}>
-      <Box sx={{width: 1, height: 1}}>
+    <ErrorMsgContext.Provider
+      value={{ open, setOpen, message, setMessage, error, setError }}
+    >
+      <Box sx={{ width: 1, height: 1 }}>
         <NavBar />
-          <Message open={open} setOpen={setOpen} error={error} message={message} />
+        <Message
+          open={open}
+          setOpen={setOpen}
+          error={error}
+          message={message}
+        />
         <Outlet />
       </Box>
     </ErrorMsgContext.Provider>

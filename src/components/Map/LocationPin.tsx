@@ -10,7 +10,7 @@ interface LocationPinProps {
 const LocationPin = ({ text }: LocationPinProps) => {
   return (
     <Box>
-      <LocationOnIcon sx={{color: "primary.main"}} />
+      <LocationOnIcon sx={{ color: 'primary.main' }} />
       <Typography>{text}</Typography>
     </Box>
   )
