@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { Box, Container, Typography, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -14,8 +14,8 @@ const Stations = () => {
   const [page, setPage] = useState<number>(1)
   const { setErr } = useErrorMsgContext()
 
-  const fetchStations = useCallback(
-    async (page: number) => {
+  useEffect(() => {
+    const fetchStations = async (page: number) => {
       try {
         const offset = (page - 1) * 10
         const response = await getStations({ offset, limit: 10 })
@@ -25,13 +25,10 @@ const Stations = () => {
       } catch (err) {
         setErr('Get stations list failed, please try again later!')
       }
-    },
-    [setErr]
-  )
+    }
 
-  useEffect(() => {
     fetchStations(page)
-  }, [fetchStations, page])
+  }, [page])
 
   return (
     <Container sx={{ my: '4.5rem' }}>

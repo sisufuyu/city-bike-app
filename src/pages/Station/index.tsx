@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { Container, Box } from '@mui/material'
 
 import Background from 'components/Background'
@@ -16,8 +16,8 @@ const Station = () => {
   const [station, setStation] = useState<StationWithJourneyInfo>()
   const { setErr } = useErrorMsgContext()
 
-  const fetchStation = useCallback(
-    async (id: string | undefined) => {
+  useEffect(() => {
+    const fetchStation = async (id: string | undefined) => {
       if (!id) return
       try {
         const response = await getOneStation(id)
@@ -26,13 +26,10 @@ const Station = () => {
       } catch (err) {
         setErr('Get station information failed, please try again later!')
       }
-    },
-    [setErr]
-  )
+    }
 
-  useEffect(() => {
     fetchStation(id)
-  }, [fetchStation, id])
+  }, [id])
 
   return (
     <Box>

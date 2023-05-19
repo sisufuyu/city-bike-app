@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { Container, Typography, Box, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -14,8 +14,8 @@ const Journeys = () => {
   const [page, setPage] = useState<number>(1)
   const { setErr } = useErrorMsgContext()
 
-  const fetchJourneys = useCallback(
-    async (page: number) => {
+  useEffect(() => {
+    const fetchJourneys = async (page: number) => {
       try {
         const offset = (page - 1) * 10
         const response = await getJourneys({ offset, limit: 10 })
@@ -25,13 +25,10 @@ const Journeys = () => {
       } catch (err) {
         setErr('Get journey list failed, please try again later!')
       }
-    },
-    [setErr]
-  )
+    }
 
-  useEffect(() => {
     fetchJourneys(page)
-  }, [fetchJourneys, page])
+  }, [page])
 
   return (
     <Container sx={{ my: '4.5rem' }}>

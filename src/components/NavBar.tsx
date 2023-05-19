@@ -13,7 +13,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu'
 import { useNavigate } from 'react-router-dom'
 
-const pages = ['Journeys', 'Stations']
+const pages = ['journeys', 'stations']
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null)
@@ -119,6 +119,7 @@ const NavBar = () => {
                   '&:hover': { color: 'secondary.main' }
                 }}
                 role="navigation"
+                className={`${page}-btn`}
               >
                 {page}
               </Button>
