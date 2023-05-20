@@ -49,6 +49,8 @@ const StationTable = ({ stations }: { stations: Station[] }) => {
                 <Button
                   variant="outlined"
                   onClick={() => navigateToStation(station._id)}
+                  role="navigation"
+                  className="station-btn"
                 >
                   View Station
                 </Button>

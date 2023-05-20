@@ -18,10 +18,22 @@ describe('Helsinki city bike app', () => {
 
   it('journys page can be opened and contains journeys', () => {
     cy.get('[role=navigation]')
-    .contains('journeys')
-    .click()
+      .contains('journeys')
+      .click()
 
     cy.contains('All Journeys')
     cy.contains('Linnanmäki')
+  })
+
+  it('station page can be opened', () => {
+    cy.get('[role=navigation]')
+      .contains('stations')
+      .click()
+    
+    cy.get('.station-btn:first')
+      .click()
+
+    cy.contains('Kaivopuisto')
+    cy.contains('Meritori 1, Helsinki')
   })
 })
