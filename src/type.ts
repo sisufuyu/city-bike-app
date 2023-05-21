@@ -12,7 +12,7 @@ export interface Journey {
   duration: number
 }
 
-export interface CreatJourneyDTO {
+export interface CreateJourneyDTO {
   departure: Date
   return: Date
   departureStationId: number

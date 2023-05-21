@@ -23,12 +23,13 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "types": ["cypress"]
   },
   "include": [
     "src"
-  ],
-  "exclude": [
-    "**/cypress"
   ]
+  // "exclude": [
+  //   "**/cypress"
+  // ]
 }

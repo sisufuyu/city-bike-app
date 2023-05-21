@@ -166,6 +166,7 @@ const CreateStation = () => {
               variant="contained"
               sx={{ color: 'secondary.main' }}
               type="submit"
+              className="create-station-btn"
             >
               Create
             </Button>

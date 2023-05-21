@@ -50,8 +50,8 @@ const Stations = () => {
           All Stations
         </Typography>
         <Link to="/stations/new">
-          <Button variant="contained" color="secondary">
-            Create new station
+          <Button variant="contained" color="secondary" role="navigation">
+            create new station
           </Button>
         </Link>
       </Box>

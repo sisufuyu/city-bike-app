@@ -45,7 +45,7 @@ const Journeys = () => {
           All Journeys
         </Typography>
         <Link to="/journeys/new">
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" color="secondary" className="create-journey-btn">
             Create new journey
           </Button>
         </Link>
