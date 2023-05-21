@@ -227,6 +227,7 @@ const CreateJourney = () => {
               variant="contained"
               sx={{ color: 'secondary.main' }}
               type="submit"
+              className="create-journey-btn"
             >
               Create
             </Button>

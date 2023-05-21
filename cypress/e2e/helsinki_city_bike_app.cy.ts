@@ -6,18 +6,18 @@ describe('Helsinki city bike app', () => {
   before(() => {
     cy.createStation({
       id: 1,
-      name: "Kaivopuisto",
-      address: "Meritori 1",
-      city: " ",
+      name: 'Kaivopuisto',
+      address: 'Meritori 1',
+      city: ' ',
       capacities: 30,
       x: 24.95021147,
       y: 60.15536962
     }).then(() => {
       cy.createStation({
         id: 2,
-        name: "Laivasillankatu",
-        address: "Laivasillankatu 14",
-        city: "",
+        name: 'Laivasillankatu',
+        address: 'Laivasillankatu 14',
+        city: '',
         capacities: 12,
         x: 24.95650977,
         y: 60.16098907
@@ -41,7 +41,7 @@ describe('Helsinki city bike app', () => {
     cy.contains('DISCOVER HELSINKI CITY LIFE')
   })
 
-  it('stations page can be opened and contains stations', () => {
+  it('stations page can be opened and render stations', () => {
     cy.get('[role=navigation]')
       .contains('stations')
       .click()
@@ -50,7 +50,7 @@ describe('Helsinki city bike app', () => {
     cy.contains('Kaivopuisto')
   })
 
-  it('journys page can be opened and contains journeys', () => {
+  it('journys page can be opened and render journeys', () => {
     cy.get('[role=navigation]')
       .contains('journeys')
       .click()
@@ -73,12 +73,12 @@ describe('Helsinki city bike app', () => {
 
   it('a new station can be created', () => {
     cy.get('[role=navigation]')
-    .contains('stations')
-    .click()
+      .contains('stations')
+      .click()
 
     cy.get('[role=navigation]')
-    .contains('create new station')
-    .click()
+      .contains('create new station')
+      .click()
 
     cy.get('#id').type('3')
     cy.get('#name').type('Kapteeninpuistikko')
@@ -92,14 +92,14 @@ describe('Helsinki city bike app', () => {
     cy.contains('Create new station successfully!')
   })
 
-  it('create a new station failes when it existed already', () => {
+  it('create a new station fails when it existed already', () => {
     cy.get('[role=navigation]')
-    .contains('stations')
-    .click()
+      .contains('stations')
+      .click()
 
     cy.get('[role=navigation]')
-    .contains('create new station')
-    .click()
+      .contains('create new station')
+      .click()
 
     cy.get('#id').type('1')
     cy.get('#name').type('Kaivopuisto')
@@ -111,5 +111,39 @@ describe('Helsinki city bike app', () => {
     cy.get('.create-station-btn').click()
 
     cy.contains('Create new station failed, please try again later!')
+  })
+
+  it('a new journey can be created', () => {
+    cy.get('[role=navigation]')
+      .contains('journeys')
+      .click()
+
+    cy.get('[role=navigation]')
+      .contains('create new journey')
+      .click()
+
+    cy.get('#departureStationId').type('2')
+    cy.get('#returnStationId').type('1')
+    cy.get('#coveredDistance').type('2834')
+
+    cy.get('.create-journey-btn').click()
+    cy.contains('Create new journey successfully!')
+  })
+
+  it('create a new journey fails if station id does not exist', () => {
+    cy.get('[role=navigation]')
+      .contains('journeys')
+      .click()
+
+    cy.get('[role=navigation]')
+      .contains('create new journey')
+      .click()
+
+    cy.get('#departureStationId').type('2')
+    cy.get('#returnStationId').type('4')
+    cy.get('#coveredDistance').type('2834')
+
+    cy.get('.create-journey-btn').click()
+    cy.contains('Create new journey failed, please try again later!')
   })
 })
