@@ -7,7 +7,7 @@ I created a server implementation in the [city-bike-api](https://github.com/sisu
 
 This project is built with following technologies:
 * ![React](https://img.shields.io/badge/React-20232a.svg?logo=react&logoColor=61DAFB)
-* ![Material](https://img.shields.io/badge/Material ui-0081CB.svg?logo=material-ui&logoColor=white)
+* ![Material](https://img.shields.io/badge/Material-ui-0081CB.svg?logo=material-ui&logoColor=white)
 * ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC.svg?logo=typescript&logoColor=white)
 
 ## Getting started
