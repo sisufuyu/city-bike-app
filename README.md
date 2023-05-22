@@ -36,7 +36,7 @@ $ npm start
 $ npm run cypress:open
 ```
 5. Choose E2E Testing
-6.Choose your preferred browser for E2E testing
+6. Choose your preferred browser for E2E testing
 7. Click helsinki_city_bike_app.cy.ts and run test
 
 ### Build
