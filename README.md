@@ -35,14 +35,30 @@ $ npm start
 ```bash
 $ npm run cypress:open
 ```
-5. Choose E2E Testing\
-![image](https://github.com/sisufuyu/city-bike-app/assets/20355911/8ae044d3-de25-4711-b8a5-a103c852384c)
-6.Choose your preferred browser for E2E testing\
-![image](https://github.com/sisufuyu/city-bike-app/assets/20355911/ea661dbe-30ce-4145-bc73-27ab5c76b0ab)
-7. Click helsinki_city_bike_app.cy.ts and run test\
-![image](https://github.com/sisufuyu/city-bike-app/assets/20355911/c598fc70-4861-48c0-a50b-65a867a1636c)
+5. Choose E2E Testing
+6.Choose your preferred browser for E2E testing
+7. Click helsinki_city_bike_app.cy.ts and run test
 
 ### Build
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+### Features
+1. View all journeys with pagination
+* For each journey show departure and return stations, covered distance in kilometers and duration in minutes
+3. View all stations with pagination
+5. View single station
+* Station name
+* Station address
+* Total number of journeys starting from the station
+* Total number of journeys ending at the station
+* Station location on the map
+* The average distance of a journey starting from the station
+* The average distance of a journey ending at the station
+6. Create a new journey
+7. Create a new station
+
+### UI Design
+![localhost_3000_](https://github.com/sisufuyu/city-bike-app/assets/20355911/5e02025e-23bc-4663-8727-f25902c0dd72)
+
