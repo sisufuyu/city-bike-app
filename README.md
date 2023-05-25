@@ -46,16 +46,16 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 ### Features
 1. View all journeys with pagination
-* For each journey show departure and return stations, covered distance in kilometers and duration in minutes
+  * For each journey show departure and return stations, covered distance in kilometers and duration in minutes
 3. View all stations with pagination
 5. View single station
-* Station name
-* Station address
-* Total number of journeys starting from the station
-* Total number of journeys ending at the station
-* Station location on the map
-* The average distance of a journey starting from the station
-* The average distance of a journey ending at the station
+  * Station name
+  * Station address
+  * Total number of journeys starting from the station
+  * Total number of journeys ending at the station
+  * Station location on the map
+  * The average distance of a journey starting from the station
+  * The average distance of a journey ending at the station
 6. Create a new journey
 7. Create a new station
 
