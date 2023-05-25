@@ -60,5 +60,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 7. Create a new station
 
 ### UI Design
-![localhost_3000_](https://github.com/sisufuyu/city-bike-app/assets/20355911/5e02025e-23bc-4663-8727-f25902c0dd72)
+![helsinki-city-bike](https://github.com/sisufuyu/city-bike-app/assets/20355911/4089c719-5898-498d-879d-a3df45eb5c97)
+
 
