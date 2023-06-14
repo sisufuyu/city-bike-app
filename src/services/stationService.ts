@@ -2,7 +2,8 @@ import axios from 'axios'
 
 import { PaginationParams, CreateStationDTO } from '../type'
 
-const baseUrl = `${process.env.REACT_APP_API_BASE_URL}/stations`
+const apiUrl = process.env.REACT_APP_API_BASE_URL
+const baseUrl = `${apiUrl}/stations`
 
 export const getStations = async ({ offset, limit }: PaginationParams) => {
   return await axios.get(`${baseUrl}?offset=${offset}&limit=${limit}`)
