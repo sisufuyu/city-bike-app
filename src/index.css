@@ -29,6 +29,7 @@ a {
   font-style: normal;
   font-weight: normal;
   src: local('Konnect Regular'), url('./fonts/Konnect-Regular.woff') format('woff');
+  font-display: swap;
 }
 
 @font-face {
@@ -36,6 +37,7 @@ a {
   font-style: normal;
   font-weight: bold;
   src: local('Konnect Bold'), url('./fonts/Konnect-Bold.woff') format('woff');
+  font-display: swap;
 }
 
 @font-face {
@@ -43,4 +45,13 @@ a {
   font-style: Italic;
   font-weight: Thin;
   src: local('Konnect Thin Italic'), url('./fonts/Konnect-ThinItalic.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TrainOne';
+  font-style: normal;
+  font-weight: normal;
+  src: local('TrainOne Regular'), url('./fonts/TrainOne-Regular.ttf') format('truetype');
+  font-display: swap;
 }

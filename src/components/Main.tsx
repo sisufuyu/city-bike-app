@@ -34,7 +34,7 @@ const Main = () => {
             height: 1
           }}
         >
-          <Typography variant="h2" color="white" fontFamily="Train One">
+          <Typography variant="h2" color="white" fontFamily="TrainOne">
             DISCOVER HELSINKI CITY LIFE
           </Typography>
           <Button
@@ -48,6 +48,7 @@ const Main = () => {
             }}
             onClick={navigateToJourneys}
             role="navigation"
+            aria-label="VIEW THE JOURNEYS"
           >
             VIEW THE JOURNEYS
           </Button>

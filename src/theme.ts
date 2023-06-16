@@ -21,7 +21,7 @@ export const themeOptions: ThemeOptions = {
       'Konnect',
       'Konnect Bold',
       'Konnect Thin Italic',
-      'Train One'
+      'TrainOne'
     ].join(',')
   }
 }

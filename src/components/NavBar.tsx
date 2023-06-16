@@ -60,7 +60,7 @@ const NavBar = () => {
           >
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -120,6 +120,7 @@ const NavBar = () => {
                 }}
                 role="navigation"
                 className={`${page}-btn`}
+                aria-label={page}
               >
                 {page}
               </Button>
